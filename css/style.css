@@ -1112,6 +1112,64 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
    NESPRESSO DIPTYCH IMAGE
 ══════════════════════════════════════ */
 
+/* DP World stacked diptych */
+.dpw-diptych {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+  position: relative;
+}
+
+.dpw-diptych__img {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s;
+}
+
+.dpw-diptych__img--top {
+  object-position: center 40%;
+}
+
+.dpw-diptych__img--bottom {
+  object-position: center 25%;
+}
+
+/* Soft gradient divider between the two photos */
+.dpw-diptych::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 28px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,253,248,0) 0%,
+    rgba(255,253,248,0.55) 40%,
+    rgba(255,253,248,0.55) 60%,
+    rgba(255,253,248,0) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+[data-theme="dark"] .dpw-diptych::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(18,14,10,0) 0%,
+    rgba(18,14,10,0.55) 40%,
+    rgba(18,14,10,0.55) 60%,
+    rgba(18,14,10,0) 100%
+  );
+}
+
+.dpw-diptych:hover .dpw-diptych__img {
+  opacity: 0.94;
+}
+
 .nesp-diptych {
   display: grid;
   grid-template-rows: 1fr 1fr;
