@@ -1118,6 +1118,8 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr;
   position: relative;
+  min-height: 560px; /* override parent's 340px so both images have room */
+  height: auto;
 }
 
 .dpw-diptych__img {
