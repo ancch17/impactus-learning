@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.documentElement;
 
   // Theme toggle
-  let theme = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+  let theme = 'light';
   root.setAttribute('data-theme', theme);
 
   document.querySelectorAll('[data-theme-toggle]').forEach(toggle => {
