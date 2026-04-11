@@ -835,7 +835,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 }
 .about-hero__inner {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 320px;
   gap: var(--space-16);
   align-items: center;
 }
@@ -870,26 +870,22 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 }
 .about-hero__photo-wrap {
   position: relative;
-  width: 240px;
-  height: 280px;
+  width: 320px;
+  height: 400px;
   border-radius: var(--radius-xl);
   overflow: hidden;
   background: var(--color-brand-subtle);
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 40px rgba(91,53,22,0.15);
+  box-shadow: 0 16px 56px rgba(91,53,22,0.18);
+  justify-self: end;
 }
 .about-hero__photo {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 15%;
 }
 .about-hero__photo-placeholder {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--color-brand);
+  display: none;
 }
 
 /* — Stats Strip — */
@@ -1093,7 +1089,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 /* — Responsive — */
 @media (max-width: 900px) {
   .about-hero__inner { grid-template-columns: 1fr; }
-  .about-hero__photo-wrap { width: 180px; height: 210px; }
+  .about-hero__photo-wrap { width: 200px; height: 240px; justify-self: start; }
   .about-stats__grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
   .about-split { grid-template-columns: 1fr; }
   .results-grid { grid-template-columns: 1fr; }
