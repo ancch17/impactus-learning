@@ -1245,12 +1245,12 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   object-fit: cover;
   object-position: center 25%;
   display: block;
-  opacity: 0.35;
+  opacity: 0.5;
   filter: saturate(0.2) sepia(0.3) brightness(1.05);
 }
 
 [data-theme="dark"] .testi-hero__photo {
-  opacity: 0.25;
+  opacity: 0.4;
   filter: saturate(0) brightness(0.9);
 }
 
@@ -1258,9 +1258,37 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to right,  var(--color-bg) 0%, rgba(255,253,248,0.92) 30%, rgba(255,253,248,0.5) 65%, var(--color-bg) 100%),
+    linear-gradient(to right,  var(--color-bg) 0%, rgba(255,253,248,0.85) 28%, rgba(255,253,248,0.35) 60%, var(--color-bg) 100%),
     linear-gradient(to top,    var(--color-bg) 0%, transparent 35%),
     linear-gradient(to bottom, var(--color-bg) 0%, transparent 25%);
+}
+
+/* Warm luminous glow behind text for contrast over the photo */
+.testi-hero .page-hero__title {
+  text-shadow:
+    0 0 40px rgba(255, 253, 248, 0.95),
+    0 0 80px rgba(255, 253, 248, 0.7),
+    0 2px 12px rgba(255, 253, 248, 0.9);
+}
+
+.testi-hero .page-hero__sub {
+  text-shadow:
+    0 0 24px rgba(255, 253, 248, 1),
+    0 0 48px rgba(255, 253, 248, 0.8),
+    0 1px 8px rgba(255, 253, 248, 0.95);
+}
+
+[data-theme="dark"] .testi-hero .page-hero__title {
+  text-shadow:
+    0 0 40px rgba(18, 14, 10, 0.9),
+    0 0 80px rgba(18, 14, 10, 0.7),
+    0 2px 12px rgba(18, 14, 10, 0.85);
+}
+
+[data-theme="dark"] .testi-hero .page-hero__sub {
+  text-shadow:
+    0 0 24px rgba(18, 14, 10, 0.95),
+    0 0 48px rgba(18, 14, 10, 0.8);
 }
 
 [data-theme="dark"] .testi-hero__fade {
