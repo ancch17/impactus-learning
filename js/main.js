@@ -1,4 +1,47 @@
 /* Impactus Learning — Main JS */
+
+/* ── Chatbase Widget Loader ──
+   Checks localStorage key 'chatbot_enabled'. Default = on.
+   Admin page (admin.html) can toggle this. ──────────────── */
+(function () {
+  var chatbotId = 'yMSJ567-Ctz7BJ9LIQevS';
+  var enabled = localStorage.getItem('chatbot_enabled');
+  // Default to enabled if never set
+  if (enabled === null) { enabled = 'true'; localStorage.setItem('chatbot_enabled', 'true'); }
+  if (enabled !== 'true') return; // Skip if disabled by admin
+
+  if (!window.chatbase || window.chatbase('getState') !== 'initialized') {
+    window.chatbase = function () {
+      if (!window.chatbase.q) { window.chatbase.q = []; }
+      window.chatbase.q.push(arguments);
+    };
+    window.chatbase = new Proxy(window.chatbase, {
+      get: function (target, prop) {
+        if (prop === 'q') return target.q;
+        return function () {
+          var args = Array.prototype.slice.call(arguments);
+          args.unshift(prop);
+          return target.apply(target, args);
+        };
+      }
+    });
+  }
+
+  function loadChatbase() {
+    var s = document.createElement('script');
+    s.src = 'https://www.chatbase.co/embed.min.js';
+    s.id = chatbotId;
+    s.domain = 'www.chatbase.co';
+    document.body.appendChild(s);
+  }
+
+  if (document.readyState === 'complete') {
+    loadChatbase();
+  } else {
+    window.addEventListener('load', loadChatbase);
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.documentElement;
 
