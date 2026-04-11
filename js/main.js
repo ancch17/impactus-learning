@@ -1,21 +1,24 @@
 /* Impactus Learning — Main JS */
 
 /* ── Chatbase Widget Loader ──
-   Checks storage key 'chatbot_enabled'. Default = on.
-   Admin page (admin.html) can toggle this. ──────────────── */
+   Reads 'chatbot_enabled' from browser storage. Default = on.
+   Toggle via admin.html ──────────────────────────────────── */
 (function () {
   var chatbotId = 'yMSJ567-Ctz7BJ9LIQevS';
-  // Safe storage wrapper (falls back to in-memory if window['local'+'Storage'] blocked)
-  var _store = {};
-  var store = {
-    get: function(k) { try { return window['local'+'Storage'].getItem(k); } catch(e) { return _store[k] || null; } },
-    set: function(k, v) { try { window['local'+'Storage'].setItem(k, v); } catch(e) { _store[k] = v; } }
-  };
-  var enabled = store.get('chatbot_enabled');
-  // Default to enabled if never set
-  if (enabled === null) { enabled = 'true'; store.set('chatbot_enabled', 'true'); }
-  if (enabled !== 'true') return; // Skip if disabled by admin
 
+  // Safe storage getter (fails gracefully in restricted iframes)
+  function getStore(key) {
+    try { return window.localStorage.getItem(key); } catch(e) { return null; }
+  }
+  function setStore(key, val) {
+    try { window.localStorage.setItem(key, val); } catch(e) {}
+  }
+
+  var enabled = getStore('chatbot_enabled');
+  if (enabled === null) { setStore('chatbot_enabled', 'true'); enabled = 'true'; }
+  if (enabled !== 'true') return;
+
+  // Initialise chatbase queue
   if (!window.chatbase || window.chatbase('getState') !== 'initialized') {
     window.chatbase = function () {
       if (!window.chatbase.q) { window.chatbase.q = []; }
@@ -33,6 +36,7 @@
     });
   }
 
+  // Inject the Chatbase script
   function loadChatbase() {
     var s = document.createElement('script');
     s.src = 'https://www.chatbase.co/embed.min.js';
@@ -65,19 +69,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // Header scroll effect
   const header = document.querySelector('.header');
   if (header) {
-    let last = 0;
     window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      header.classList.toggle('header--scrolled', y > 40);
-      last = y;
+      header.classList.toggle('header--scrolled', window.scrollY > 40);
     }, { passive: true });
   }
 
   // Mobile nav drawer with swipe
   const navToggle = document.querySelector('.nav__toggle');
-  const navLinks = document.querySelector('.nav__links');
+  const navLinks  = document.querySelector('.nav__links');
   const navOverlay = document.querySelector('.nav__overlay');
-  const navClose = document.querySelector('.nav__close');
+  const navClose  = document.querySelector('.nav__close');
 
   if (navToggle && navLinks) {
     const drawerWidth = () => navLinks.offsetWidth;
@@ -110,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     navToggle.addEventListener('click', () => { if (!isOpen) openNav(); else closeNav(); });
-    if (navClose) navClose.addEventListener('click', closeNav);
+    if (navClose)   navClose.addEventListener('click', closeNav);
     if (navOverlay) navOverlay.addEventListener('click', closeNav);
     navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNav));
 
@@ -161,8 +162,8 @@ document.addEventListener('DOMContentLoaded', () => {
       navLinks.classList.remove('dragging');
       if (navOverlay) navOverlay.classList.remove('dragging');
       const dx = touchCurrentX - touchStartX;
-      if (isOpen) { dx > SWIPE_THRESHOLD ? closeNav() : openNav(); }
-      else if (edgeSwipe) { dx < -SWIPE_THRESHOLD ? openNav() : closeNav(); }
+      if (isOpen)       { dx > SWIPE_THRESHOLD  ? closeNav() : openNav(); }
+      else if (edgeSwipe) { dx < -SWIPE_THRESHOLD ? openNav()  : closeNav(); }
     }, { passive: true });
   }
 
