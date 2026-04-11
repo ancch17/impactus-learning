@@ -1266,16 +1266,27 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 /* Warm luminous glow behind text for contrast over the photo */
 .testi-hero .page-hero__title {
   text-shadow:
-    0 0 40px rgba(255, 253, 248, 0.95),
-    0 0 80px rgba(255, 253, 248, 0.7),
-    0 2px 12px rgba(255, 253, 248, 0.9);
+    0 0 8px  rgba(255, 253, 248, 1),
+    0 0 20px rgba(255, 253, 248, 1),
+    0 0 50px rgba(255, 253, 248, 1),
+    0 0 100px rgba(255, 253, 248, 0.9),
+    0 2px 4px rgba(255, 253, 248, 1);
 }
 
 .testi-hero .page-hero__sub {
   text-shadow:
-    0 0 24px rgba(255, 253, 248, 1),
-    0 0 48px rgba(255, 253, 248, 0.8),
-    0 1px 8px rgba(255, 253, 248, 0.95);
+    0 0 6px  rgba(255, 253, 248, 1),
+    0 0 16px rgba(255, 253, 248, 1),
+    0 0 40px rgba(255, 253, 248, 1),
+    0 0 80px rgba(255, 253, 248, 0.9),
+    0 1px 4px rgba(255, 253, 248, 1);
+}
+
+.testi-hero .page-hero__eyebrow {
+  text-shadow:
+    0 0 6px  rgba(255, 253, 248, 1),
+    0 0 20px rgba(255, 253, 248, 1),
+    0 0 40px rgba(255, 253, 248, 0.9);
 }
 
 [data-theme="dark"] .testi-hero .page-hero__title {
