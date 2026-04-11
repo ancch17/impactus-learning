@@ -336,7 +336,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 
 /* ---------- STATS BAR ---------- */
 .stats {
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  display: grid; grid-template-columns: repeat(2, 1fr);
   border: 1px solid var(--color-divider); border-radius: var(--radius-xl);
   overflow: hidden; background: var(--color-surface);
 }
