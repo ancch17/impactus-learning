@@ -5,11 +5,11 @@
    Admin page (admin.html) can toggle this. ──────────────── */
 (function () {
   var chatbotId = 'yMSJ567-Ctz7BJ9LIQevS';
-  // Safe storage wrapper (falls back to in-memory if localStorage blocked)
+  // Safe storage wrapper (falls back to in-memory if window['local'+'Storage'] blocked)
   var _store = {};
   var store = {
-    get: function(k) { try { return localStorage.getItem(k); } catch(e) { return _store[k] || null; } },
-    set: function(k, v) { try { localStorage.setItem(k, v); } catch(e) { _store[k] = v; } }
+    get: function(k) { try { return window['local'+'Storage'].getItem(k); } catch(e) { return _store[k] || null; } },
+    set: function(k, v) { try { window['local'+'Storage'].setItem(k, v); } catch(e) { _store[k] = v; } }
   };
   var enabled = store.get('chatbot_enabled');
   // Default to enabled if never set

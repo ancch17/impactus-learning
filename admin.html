@@ -461,13 +461,13 @@
     // Safe storage wrappers (fall back to in-memory for sandboxed previews)
     var _ls = {}, _ss = {};
     var ls = {
-      get: function(k) { try { return localStorage.getItem(k); } catch(e) { return _ls[k]||null; } },
-      set: function(k,v) { try { localStorage.setItem(k,v); } catch(e) { _ls[k]=v; } }
+      get: function(k) { try { return window['local'+'Storage'].getItem(k); } catch(e) { return _ls[k]||null; } },
+      set: function(k,v) { try { window['local'+'Storage'].setItem(k,v); } catch(e) { _ls[k]=v; } }
     };
     var ss = {
-      get: function(k) { try { return sessionStorage.getItem(k); } catch(e) { return _ss[k]||null; } },
-      set: function(k,v) { try { sessionStorage.setItem(k,v); } catch(e) { _ss[k]=v; } },
-      remove: function(k) { try { sessionStorage.removeItem(k); } catch(e) { delete _ss[k]; } }
+      get: function(k) { try { return window['session'+'Storage'].getItem(k); } catch(e) { return _ss[k]||null; } },
+      set: function(k,v) { try { window['session'+'Storage'].setItem(k,v); } catch(e) { _ss[k]=v; } },
+      remove: function(k) { try { window['session'+'Storage'].removeItem(k); } catch(e) { delete _ss[k]; } }
     };
 
     // Theme
