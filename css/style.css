@@ -288,13 +288,13 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 @media (max-width: 768px) {
   .hero__photo-wrap {
     width: 100%;
-    height: 55%;
-    top: auto; bottom: 0;
+    height: 42%;
+    top: auto;
+    bottom: 0;
   }
   .hero__photo {
     object-fit: cover;
-    object-position: center 20%;
-    content: url('../images/hero-training-mobile.jpg');
+    object-position: center top;
   }
   .hero__photo-fade {
     background:
@@ -304,7 +304,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
     background:
       linear-gradient(to bottom, var(--color-bg) 0%, var(--color-bg) 8%, rgba(18,14,10,0) 55%);
   }
-  .hero { padding-bottom: 72vw; }
+  .hero { padding-bottom: 77vw; }
   .hero__actions {
     position: relative; z-index: 2;
     flex-direction: column;
