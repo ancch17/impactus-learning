@@ -1192,6 +1192,17 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 
 @media (max-width: 768px) {
   .testi-hero__photo {
-    opacity: 0.07;
+    opacity: 0.22;
+    filter: saturate(0.3) sepia(0.3) brightness(1.05);
+  }
+  .testi-hero__fade {
+    background:
+      linear-gradient(to bottom, var(--color-bg) 0%, rgba(255,253,248,0.6) 35%, rgba(255,253,248,0.4) 65%, var(--color-bg) 100%),
+      linear-gradient(to right, var(--color-bg) 0%, transparent 40%);
+  }
+  [data-theme="dark"] .testi-hero__fade {
+    background:
+      linear-gradient(to bottom, var(--color-bg) 0%, rgba(18,14,10,0.6) 35%, rgba(18,14,10,0.4) 65%, var(--color-bg) 100%),
+      linear-gradient(to right, var(--color-bg) 0%, transparent 40%);
   }
 }
