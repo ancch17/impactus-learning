@@ -1,13 +1,19 @@
 /* Impactus Learning — Main JS */
 
 /* ── Chatbase Widget Loader ──
-   Checks localStorage key 'chatbot_enabled'. Default = on.
+   Checks storage key 'chatbot_enabled'. Default = on.
    Admin page (admin.html) can toggle this. ──────────────── */
 (function () {
   var chatbotId = 'yMSJ567-Ctz7BJ9LIQevS';
-  var enabled = localStorage.getItem('chatbot_enabled');
+  // Safe storage wrapper (falls back to in-memory if localStorage blocked)
+  var _store = {};
+  var store = {
+    get: function(k) { try { return localStorage.getItem(k); } catch(e) { return _store[k] || null; } },
+    set: function(k, v) { try { localStorage.setItem(k, v); } catch(e) { _store[k] = v; } }
+  };
+  var enabled = store.get('chatbot_enabled');
   // Default to enabled if never set
-  if (enabled === null) { enabled = 'true'; localStorage.setItem('chatbot_enabled', 'true'); }
+  if (enabled === null) { enabled = 'true'; store.set('chatbot_enabled', 'true'); }
   if (enabled !== 'true') return; // Skip if disabled by admin
 
   if (!window.chatbase || window.chatbase('getState') !== 'initialized') {

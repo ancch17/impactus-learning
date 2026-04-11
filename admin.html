@@ -458,7 +458,19 @@
   </div>
 
   <script>
-    // ── Theme ──────────────────────────────────────────────────────────────
+    // Safe storage wrappers (fall back to in-memory for sandboxed previews)
+    var _ls = {}, _ss = {};
+    var ls = {
+      get: function(k) { try { return localStorage.getItem(k); } catch(e) { return _ls[k]||null; } },
+      set: function(k,v) { try { localStorage.setItem(k,v); } catch(e) { _ls[k]=v; } }
+    };
+    var ss = {
+      get: function(k) { try { return sessionStorage.getItem(k); } catch(e) { return _ss[k]||null; } },
+      set: function(k,v) { try { sessionStorage.setItem(k,v); } catch(e) { _ss[k]=v; } },
+      remove: function(k) { try { sessionStorage.removeItem(k); } catch(e) { delete _ss[k]; } }
+    };
+
+    // Theme
     var root = document.documentElement;
     var theme = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
     root.setAttribute('data-theme', theme);
@@ -467,21 +479,21 @@
       root.setAttribute('data-theme', theme);
     });
 
-    // ── Constants ──────────────────────────────────────────────────────────
+    // Constants
     var CORRECT_PASSWORD = '4450';
     var SESSION_KEY = 'admin_session';
     var CHATBOT_KEY = 'chatbot_enabled';
 
-    // ── DOM refs ───────────────────────────────────────────────────────────
-    var loginScreen  = document.getElementById('login-screen');
-    var adminScreen  = document.getElementById('admin-screen');
-    var loginForm    = document.getElementById('login-form');
-    var loginError   = document.getElementById('login-error');
-    var logoutBtn    = document.getElementById('logout-btn');
+    // DOM refs
+    var loginScreen   = document.getElementById('login-screen');
+    var adminScreen   = document.getElementById('admin-screen');
+    var loginForm     = document.getElementById('login-form');
+    var loginError    = document.getElementById('login-error');
+    var logoutBtn     = document.getElementById('logout-btn');
     var chatbotToggle = document.getElementById('chatbot-toggle');
-    var statusBadge  = document.getElementById('chatbot-status-badge');
+    var statusBadge   = document.getElementById('chatbot-status-badge');
 
-    // ── Helpers ────────────────────────────────────────────────────────────
+    // Helpers
     function showAdmin() {
       loginScreen.style.display = 'none';
       adminScreen.style.display = 'block';
@@ -494,7 +506,7 @@
     }
 
     function syncToggle() {
-      var enabled = localStorage.getItem(CHATBOT_KEY);
+      var enabled = ls.get(CHATBOT_KEY);
       var isOn = (enabled === null || enabled === 'true');
       chatbotToggle.checked = isOn;
       updateBadge(isOn);
@@ -505,17 +517,17 @@
       statusBadge.className = 'status-badge ' + (isOn ? 'status-badge--on' : 'status-badge--off');
     }
 
-    // ── Session check ──────────────────────────────────────────────────────
-    if (sessionStorage.getItem(SESSION_KEY) === 'true') {
+    // Session check (stays logged in for the browser session)
+    if (ss.get(SESSION_KEY) === 'true') {
       showAdmin();
     }
 
-    // ── Login ──────────────────────────────────────────────────────────────
+    // Login
     loginForm.addEventListener('submit', function (e) {
       e.preventDefault();
       var pwd = document.getElementById('password').value;
       if (pwd === CORRECT_PASSWORD) {
-        sessionStorage.setItem(SESSION_KEY, 'true');
+        ss.set(SESSION_KEY, 'true');
         loginError.style.display = 'none';
         document.getElementById('password').value = '';
         showAdmin();
@@ -526,16 +538,16 @@
       }
     });
 
-    // ── Logout ─────────────────────────────────────────────────────────────
+    // Logout
     logoutBtn.addEventListener('click', function () {
-      sessionStorage.removeItem(SESSION_KEY);
+      ss.remove(SESSION_KEY);
       showLogin();
     });
 
-    // ── Chatbot Toggle ─────────────────────────────────────────────────────
+    // Chatbot Toggle
     chatbotToggle.addEventListener('change', function () {
       var isOn = chatbotToggle.checked;
-      localStorage.setItem(CHATBOT_KEY, isOn ? 'true' : 'false');
+      ls.set(CHATBOT_KEY, isOn ? 'true' : 'false');
       updateBadge(isOn);
     });
   </script>
