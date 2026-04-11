@@ -336,11 +336,13 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 
 /* ---------- STATS BAR ---------- */
 .stats {
-  display: grid; grid-template-columns: repeat(2, 1fr);
+  display: flex;
   border: 1px solid var(--color-divider); border-radius: var(--radius-xl);
   overflow: hidden; background: var(--color-surface);
 }
 .stat {
+  flex: 1 1 0;
+  width: 0;
   padding: var(--space-8) var(--space-6);
   text-align: center;
   display: flex;
