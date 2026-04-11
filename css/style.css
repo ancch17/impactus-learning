@@ -1143,3 +1143,61 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
     height: 200px;
   }
 }
+
+/* ══════════════════════════════════════
+   TESTIMONIALS HERO
+══════════════════════════════════════ */
+
+.testi-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.testi-hero__photo-wrap {
+  position: absolute;
+  top: 0; right: 0;
+  width: 58%;
+  height: 100%;
+  z-index: 0;
+}
+
+.testi-hero__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+.testi-hero__fade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, var(--color-bg) 0%, var(--color-bg) 20%, rgba(255,253,248,0.85) 50%, transparent 75%),
+    linear-gradient(to top, var(--color-bg) 0%, transparent 20%),
+    linear-gradient(to bottom, var(--color-bg) 0%, transparent 15%);
+}
+
+[data-theme="dark"] .testi-hero__fade {
+  background:
+    linear-gradient(to right, var(--color-bg) 0%, var(--color-bg) 20%, rgba(18,14,10,0.85) 50%, transparent 75%),
+    linear-gradient(to top, var(--color-bg) 0%, transparent 20%),
+    linear-gradient(to bottom, var(--color-bg) 0%, transparent 15%);
+}
+
+@media (max-width: 768px) {
+  .testi-hero__photo-wrap {
+    width: 100%;
+    height: 45%;
+    top: auto;
+    bottom: 0;
+  }
+  .testi-hero__fade {
+    background:
+      linear-gradient(to bottom, var(--color-bg) 0%, var(--color-bg) 10%, rgba(255,253,248,0) 55%);
+  }
+  [data-theme="dark"] .testi-hero__fade {
+    background:
+      linear-gradient(to bottom, var(--color-bg) 0%, var(--color-bg) 10%, rgba(18,14,10,0) 55%);
+  }
+}
