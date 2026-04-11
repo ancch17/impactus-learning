@@ -1155,9 +1155,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 
 .testi-hero__photo-wrap {
   position: absolute;
-  top: 0; right: 0;
-  width: 58%;
-  height: 100%;
+  inset: 0;
   z-index: 0;
 }
 
@@ -1165,39 +1163,35 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 25%;
   display: block;
+  opacity: 0.09;
+  filter: saturate(0) sepia(0.5) brightness(1.05);
+}
+
+[data-theme="dark"] .testi-hero__photo {
+  opacity: 0.07;
+  filter: saturate(0) brightness(0.9);
 }
 
 .testi-hero__fade {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to right, var(--color-bg) 0%, var(--color-bg) 20%, rgba(255,253,248,0.85) 50%, transparent 75%),
-    linear-gradient(to top, var(--color-bg) 0%, transparent 20%),
-    linear-gradient(to bottom, var(--color-bg) 0%, transparent 15%);
+    linear-gradient(to right,  var(--color-bg) 0%, rgba(255,253,248,0.92) 30%, rgba(255,253,248,0.5) 65%, var(--color-bg) 100%),
+    linear-gradient(to top,    var(--color-bg) 0%, transparent 35%),
+    linear-gradient(to bottom, var(--color-bg) 0%, transparent 25%);
 }
 
 [data-theme="dark"] .testi-hero__fade {
   background:
-    linear-gradient(to right, var(--color-bg) 0%, var(--color-bg) 20%, rgba(18,14,10,0.85) 50%, transparent 75%),
-    linear-gradient(to top, var(--color-bg) 0%, transparent 20%),
-    linear-gradient(to bottom, var(--color-bg) 0%, transparent 15%);
+    linear-gradient(to right,  var(--color-bg) 0%, rgba(18,14,10,0.92) 30%, rgba(18,14,10,0.5) 65%, var(--color-bg) 100%),
+    linear-gradient(to top,    var(--color-bg) 0%, transparent 35%),
+    linear-gradient(to bottom, var(--color-bg) 0%, transparent 25%);
 }
 
 @media (max-width: 768px) {
-  .testi-hero__photo-wrap {
-    width: 100%;
-    height: 45%;
-    top: auto;
-    bottom: 0;
-  }
-  .testi-hero__fade {
-    background:
-      linear-gradient(to bottom, var(--color-bg) 0%, var(--color-bg) 10%, rgba(255,253,248,0) 55%);
-  }
-  [data-theme="dark"] .testi-hero__fade {
-    background:
-      linear-gradient(to bottom, var(--color-bg) 0%, var(--color-bg) 10%, rgba(18,14,10,0) 55%);
+  .testi-hero__photo {
+    opacity: 0.07;
   }
 }
