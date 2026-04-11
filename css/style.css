@@ -252,9 +252,59 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
     radial-gradient(ellipse 80% 50% at 50% -20%, rgba(184,115,42,0.08) 0%, transparent 70%),
     radial-gradient(ellipse 50% 40% at 90% 90%, rgba(91,53,22,0.05) 0%, transparent 60%);
 }
+
+/* Hero photo — right half */
+.hero__photo-wrap {
+  position: absolute;
+  top: 0; right: 0;
+  width: 52%;
+  height: 100%;
+  z-index: 0;
+}
+.hero__photo {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+/* Gradient fades: left edge blends into bg, bottom softens */
+.hero__photo-fade {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to right, var(--color-bg) 0%, rgba(255,253,248,0.6) 35%, transparent 65%),
+    linear-gradient(to top, var(--color-bg) 0%, transparent 30%);
+}
+[data-theme="dark"] .hero__photo-fade {
+  background:
+    linear-gradient(to right, var(--color-bg) 0%, rgba(18,14,10,0.7) 35%, transparent 65%),
+    linear-gradient(to top, var(--color-bg) 0%, transparent 30%);
+}
+
 .hero__inner {
   position: relative; z-index: 1;
-  max-width: 720px;
+  max-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .hero__photo-wrap {
+    width: 100%;
+    height: 42%;
+    top: auto; bottom: 0;
+  }
+  .hero__photo-fade {
+    background:
+      linear-gradient(to bottom, var(--color-bg) 0%, var(--color-bg) 8%, rgba(255,253,248,0) 55%);
+  }
+  [data-theme="dark"] .hero__photo-fade {
+    background:
+      linear-gradient(to bottom, var(--color-bg) 0%, var(--color-bg) 8%, rgba(18,14,10,0) 55%);
+  }
+  .hero { padding-bottom: 56vw; }
+  .hero__actions {
+    position: relative; z-index: 2;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 .hero__eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
