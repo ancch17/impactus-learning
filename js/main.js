@@ -185,15 +185,18 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-count]').forEach(el => {
     const target = parseInt(el.dataset.count);
     const suffix = el.dataset.suffix || '';
+    const prefix = el.dataset.prefix || '';
+    const divide = parseFloat(el.dataset.divide) || 1;
     const obs = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         obs.unobserve(el);
         let current = 0;
-        const step = Math.max(1, Math.floor(target / 40));
+        const step = Math.max(1, Math.floor(target / 50));
         const interval = setInterval(() => {
           current += step;
           if (current >= target) { current = target; clearInterval(interval); }
-          el.textContent = current + suffix;
+          const display = divide > 1 ? (current / divide).toFixed(2) : current.toLocaleString();
+          el.textContent = prefix + display + suffix;
         }, 30);
       }
     }, { threshold: 0.5 });
