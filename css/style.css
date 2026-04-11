@@ -1112,20 +1112,21 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
    NESPRESSO DIPTYCH IMAGE
 ══════════════════════════════════════ */
 
-/* DP World stacked diptych — two fixed-height landscape slices */
+/* DP World stacked diptych — stretches to fill parent height like Nespresso */
 .dpw-diptych {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
   position: relative;
-  height: auto;
+  height: 100%;
 }
 
 .dpw-diptych__img {
   width: 100%;
-  height: 260px;
+  height: 100%;
+  min-height: 200px;
   object-fit: cover;
   display: block;
-  flex-shrink: 0;
   transition: opacity 0.3s;
 }
 
@@ -1142,7 +1143,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   content: '';
   position: absolute;
   left: 0; right: 0;
-  top: 260px;
+  top: 50%;
   transform: translateY(-50%);
   height: 32px;
   background: linear-gradient(
@@ -1168,6 +1169,20 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 
 .dpw-diptych:hover .dpw-diptych__img {
   opacity: 0.94;
+}
+
+/* Desktop only: stretch DP World diptych card so images are taller (4:3 each) */
+@media (min-width: 769px) {
+  .dpworld-feature:has(.dpw-diptych) {
+    align-items: stretch;
+    min-height: 680px;
+  }
+  .dpworld-feature:has(.dpw-diptych) .dpworld-feature__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-10);
+  }
 }
 
 .nesp-diptych {
