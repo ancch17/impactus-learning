@@ -66,7 +66,7 @@
     <div class="container">
       <p class="section__tag">Who We Train</p>
       <h2 class="section__title">Built for the People Who Drive Business</h2>
-      <div class="card-grid" style="margin-top: var(--space-8);">
+      <div class="card-grid" style="margin-top: var(--space-8); grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));">
         <div class="card" data-animate>
           <div class="card__icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
@@ -87,6 +87,13 @@
           </div>
           <h3 class="card__title">Creative Professionals</h3>
           <p class="card__desc">Designers, content creators and screenwriters who want AI to speed up research, ideation and drafting while keeping a strong human voice.</p>
+        </div>
+        <div class="card" data-animate>
+          <div class="card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+          </div>
+          <h3 class="card__title">Writers &amp; Storytellers</h3>
+          <p class="card__desc">An engaging AI bootcamp for scriptwriters, novelists and creative practitioners — turning months of development into weeks through strategic prompt engineering.</p>
         </div>
       </div>
     </div>
@@ -189,26 +196,96 @@
         </div>
       </div>
 
-      <div class="card-grid" style="margin-top: var(--space-8);">
-        <div class="card" data-animate>
-          <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-5);">
-            <div class="card__icon" style="margin-bottom: 0;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </div>
-            <span style="font-weight: 700; font-size: var(--text-sm); color: var(--color-brand);">Nespresso Singapore</span>
-          </div>
-          <p class="card__desc">Two workshops spanning B2B sales, finance, customer relationship, quality, supply chain, boutique managers, HR, marketing and e-commerce teams.</p>
+      <!-- Nespresso Editorial Feature -->
+      <div class="nesp-feature" data-animate style="margin-top: var(--space-8);">
+        <div class="nesp-feature__header">
+          <p class="nesp-feature__eyebrow">In Focus &mdash; Nespresso Singapore</p>
+          <h3 class="nesp-feature__title">Two Days That Changed How a Team Works</h3>
+          <p class="nesp-feature__lead">Across two intensive AI bootcamp workshops, Nespresso Singapore brought together a remarkably diverse workforce &mdash; B2B sales, finance, customer relationships, quality, supply chain, boutique managers, HR, marketing and e-commerce. The brief was clear: no theory. Only tools and techniques the team could use the very next morning.</p>
         </div>
-        <div class="card" data-animate>
-          <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-5);">
-            <div class="card__icon" style="margin-bottom: 0;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+
+        <div class="nesp-feature__grid">
+          <div class="nesp-feature__photo-col">
+            <div class="nesp-photo-stack">
+              <div class="nesp-photo-wrap nesp-photo-wrap--top">
+                <img src="images/nespresso-day2.jpg" alt="Nespresso Singapore AI Workshop Day 1" class="nesp-photo" loading="lazy">
+                <div class="nesp-photo-label">Day 1 &mdash; Cross-functional Bootcamp</div>
+              </div>
+              <div class="nesp-photo-wrap nesp-photo-wrap--bottom">
+                <img src="images/nespresso-day1.jpg" alt="Nespresso Singapore AI Workshop Day 2" class="nesp-photo" loading="lazy">
+                <div class="nesp-photo-label">Day 2 &mdash; Marketing Excellence</div>
+              </div>
             </div>
-            <span style="font-weight: 700; font-size: var(--text-sm); color: var(--color-brand);">Screenwriters Association</span>
           </div>
-          <p class="card__desc">An engaging evening demonstrating how AI can supercharge writers — turning months of development into weeks through strategic prompt engineering.</p>
+
+          <div class="nesp-feature__content-col">
+            <div class="nesp-outcomes">
+              <h4 class="nesp-outcomes__title">What the Teams Accomplished</h4>
+              <ul class="nesp-outcomes__list">
+                <li>
+                  <span class="nesp-outcomes__dot"></span>
+                  <div>
+                    <strong>Prompt Engineering for Real Work Challenges</strong>
+                    <p>From rostering to service recovery &mdash; participants solved actual workplace problems using structured prompt techniques during the session.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="nesp-outcomes__dot"></span>
+                  <div>
+                    <strong>CRAFT Methodology for Marketing</strong>
+                    <p>The marketing team mastered a repeatable framework for crafting campaigns, Gen Z strategies, and multi-modal content from brief to execution.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="nesp-outcomes__dot"></span>
+                  <div>
+                    <strong>AI-Powered Presentations &amp; Visualisation</strong>
+                    <p>Staff freed from slide-churning &mdash; now focused on strategy and storytelling while AI handles the visual heavy lifting.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="nesp-outcomes__dot"></span>
+                  <div>
+                    <strong>Excel with Copilot &amp; AI Analytics</strong>
+                    <p>Finance and supply chain teams applied AI reasoning to sentiment analysis, data interpretation and forecasting.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="nesp-outcomes__dot"></span>
+                  <div>
+                    <strong>Multi-Modal Content Creation</strong>
+                    <p>Product placement visuals, video, audio and compelling copywriting &mdash; produced live, in the room, in minutes.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="nesp-quotes">
+              <blockquote class="nesp-quote">
+                <p>"Thank you Andrew for the super engaging session. Really mind blowing what AI can do!"</p>
+                <footer>&mdash; Nespresso Bootcamp Participant</footer>
+              </blockquote>
+              <blockquote class="nesp-quote">
+                <p>"The training was really insightful and helpful. I see myself using it in my work."</p>
+                <footer>&mdash; Nespresso Marketing Team Member</footer>
+              </blockquote>
+            </div>
+
+            <div class="nesp-result-bar">
+              <div class="nesp-result-bar__item">
+                <span class="nesp-result-bar__value">100%</span>
+                <span class="nesp-result-bar__label">Agree / Strongly Agree across all trainer dimensions</span>
+              </div>
+              <div class="nesp-result-bar__item">
+                <span class="nesp-result-bar__value">2 &rarr; 4</span>
+                <span class="nesp-result-bar__label">Knowledge score jump (same day, out of 5)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+
     </div>
   </section>
 
