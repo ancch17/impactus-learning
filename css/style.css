@@ -72,10 +72,10 @@
 
 /* ---------- DARK MODE ---------- */
 [data-theme="dark"] {
-  --color-bg:          #1A1610;
-  --color-surface:     #231E17;
-  --color-surface-2:   #2D261E;
-  --color-surface-3:   #372F26;
+  --color-bg:          #26201A;
+  --color-surface:     #302820;
+  --color-surface-2:   #3A3028;
+  --color-surface-3:   #453830;
   --color-text:        #E8E2DA;
   --color-text-muted:  #A69A8C;
   --color-text-subtle: #7A6E60;
@@ -121,13 +121,13 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   border-bottom: 1px solid var(--color-divider);
   transition: background-color 0.3s, box-shadow 0.3s;
 }
-[data-theme="dark"] .header { background: rgba(26,22,16,0.88); }
+[data-theme="dark"] .header { background: rgba(38,32,26,0.92); }
 .header--scrolled { box-shadow: var(--shadow-sm); }
 
 .nav { display: flex; align-items: center; justify-content: space-between; padding-block: var(--space-4); }
 .nav__logo { display: flex; align-items: center; gap: var(--space-3); text-decoration: none; color: var(--color-text); }
-.nav__logo-img { height: 40px; width: auto; border-radius: var(--radius-sm); object-fit: contain; }
-[data-theme="dark"] .nav__logo-img { filter: brightness(1.8) saturate(0.7); }
+.nav__logo-img { height: 40px; width: auto; object-fit: contain; display: block; mix-blend-mode: multiply; }
+[data-theme="dark"] .nav__logo-img { content: url('../images/logo-dark.jpg'); mix-blend-mode: normal; filter: brightness(1.1); }
 
 .nav__links { display: flex; align-items: center; gap: var(--space-1); list-style: none; margin: 0; padding: 0; }
 .nav__links a {
@@ -166,7 +166,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
     -webkit-overflow-scrolling: touch;
   }
   .nav__links.dragging { transition: none; }
-  [data-theme="dark"] .nav__links { background-color: #1A1610 !important; color-scheme: dark; border-left-color: #332C24; }
+  [data-theme="dark"] .nav__links { background-color: #26201A !important; color-scheme: dark; border-left-color: #45382E; }
   .nav__links.open { transform: translateX(0); }
 
   .nav__drawer-header {
@@ -560,7 +560,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   color: rgba(255,253,248,0.7);
   padding: var(--space-16) 0 var(--space-10);
 }
-[data-theme="dark"] .footer { background: #0F0C08; }
+[data-theme="dark"] .footer { background: #1A1510; }
 .footer__grid {
   display: grid; grid-template-columns: 2fr 1fr 1fr;
   gap: var(--space-12); margin-bottom: var(--space-12);
