@@ -79,9 +79,13 @@
   --color-text:        #E8E2DA;
   --color-text-muted:  #A69A8C;
   --color-text-subtle: #7A6E60;
-  --color-divider:     #332C24;
+  --color-divider:     #3E3228;
+  /* Lift brand colour so it's visible on dark surfaces */
+  --color-brand:       #C4894A;
+  --color-brand-hover: #D49A5A;
+  --color-brand-light: #D4A06A;
+  --color-brand-subtle: rgba(196,137,74,0.12);
   --color-divider-strong: #4A4135;
-  --color-brand-subtle: rgba(184,115,42,0.12);
   --color-accent-subtle: rgba(184,115,42,0.15);
   --shadow-xs:  0 1px 2px rgba(0,0,0,0.2);
   --shadow-sm:  0 2px 8px rgba(0,0,0,0.25);
@@ -122,6 +126,20 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 [data-theme="dark"] .header { background: rgba(38,32,26,0.92); }
+
+/* Dark mode: keep primary button espresso, override amber brand back */
+[data-theme="dark"] .btn--primary {
+  background: #5B3516;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+[data-theme="dark"] .btn--primary:hover { background: #7A4A28; }
+
+/* Dark mode: about stats strip stays dark, white text */
+[data-theme="dark"] .about-stats {
+  background: #1A1510;
+}
+[data-theme="dark"] .about-stat__number { color: #fff; }
+[data-theme="dark"] .about-stat__label { color: rgba(255,255,255,0.65); }
 .header--scrolled { box-shadow: var(--shadow-sm); }
 
 .nav { display: flex; align-items: center; justify-content: space-between; padding-block: var(--space-4); }
