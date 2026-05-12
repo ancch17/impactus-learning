@@ -55,14 +55,15 @@
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.documentElement;
 
-  // Theme toggle
-  let theme = 'light';
+  // Theme toggle — persists within session via localStorage
+  let theme = (sessionStorage.getItem('il_theme') || 'light');
   root.setAttribute('data-theme', theme);
 
   document.querySelectorAll('[data-theme-toggle]').forEach(toggle => {
     toggle.addEventListener('click', () => {
       theme = theme === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', theme);
+      sessionStorage.setItem('il_theme', theme);
     });
   });
 
