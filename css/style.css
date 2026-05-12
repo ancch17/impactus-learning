@@ -145,7 +145,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 .nav { display: flex; align-items: center; justify-content: space-between; padding-block: var(--space-4); }
 .nav__logo { display: flex; align-items: center; gap: var(--space-3); text-decoration: none; color: var(--color-text); }
 .nav__logo-img { height: 40px; width: auto; object-fit: contain; display: block; mix-blend-mode: multiply; }
-[data-theme="dark"] .nav__logo-img { content: url('../images/logo-dark.jpg'); mix-blend-mode: normal; filter: brightness(1.1); }
+[data-theme="dark"] .nav__logo-img { content: url('../images/logo-dark.png'); mix-blend-mode: normal; filter: brightness(1.1); }
 
 .nav__links { display: flex; align-items: center; gap: var(--space-1); list-style: none; margin: 0; padding: 0; }
 .nav__links a {
