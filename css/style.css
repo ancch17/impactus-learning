@@ -185,7 +185,9 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   }
   .nav__links.dragging { transition: none; }
   [data-theme="dark"] .nav__links { background-color: #26201A !important; color-scheme: dark; border-left-color: #45382E; }
-  .nav__links.open { transform: translateX(0); }
+  /* !important lock: blocks old cached JS from opening nav via inline style or .open class */
+  .nav__links:not(.nav-is-open) { transform: translateX(100%) !important; pointer-events: none; }
+  .nav__links.nav-is-open { transform: translateX(0); pointer-events: auto; }
 
   .nav__drawer-header {
     display: flex !important; align-items: center; justify-content: space-between;
@@ -225,7 +227,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
     -webkit-tap-highlight-color: transparent;
   }
   .nav__overlay.dragging { transition: none; }
-  .nav__overlay.open { opacity: 1; visibility: visible; }
+  .nav__overlay.nav-is-open { opacity: 1; visibility: visible; }
 }
 
 /* ---------- BUTTONS ---------- */

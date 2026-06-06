@@ -91,11 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function openNav() {
       isOpen = true;
-      navLinks.classList.add('open');
+      navLinks.classList.add('nav-is-open');
       navLinks.classList.remove('dragging');
       navLinks.style.transform = '';
       if (navOverlay) {
-        navOverlay.classList.add('open');
+        navOverlay.classList.add('nav-is-open');
         navOverlay.classList.remove('dragging');
         navOverlay.style.opacity = '';
       }
@@ -104,11 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function closeNav() {
       isOpen = false;
-      navLinks.classList.remove('open');
+      navLinks.classList.remove('nav-is-open');
       navLinks.classList.remove('dragging');
       navLinks.style.transform = '';
       if (navOverlay) {
-        navOverlay.classList.remove('open');
+        navOverlay.classList.remove('nav-is-open');
         navOverlay.classList.remove('dragging');
         navOverlay.style.opacity = '';
       }
