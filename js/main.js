@@ -84,6 +84,38 @@ document.addEventListener('DOMContentLoaded', () => {
   if (navToggle && navLinks) {
     let isOpen = false;
 
+    // The .header has backdrop-filter, which makes it a containing block for
+    // position:fixed children. That traps the mobile drawer at the header's
+    // original top-of-page location, so it scrolls out of view when you're
+    // lower down the page. Fix: on mobile, move the drawer + overlay to <body>
+    // so position:fixed anchors to the viewport (and the drawer follows you).
+    // On desktop the same <ul> is the horizontal nav, so restore it to the nav.
+    const navEl = navLinks.closest('.nav');
+    const navActions = navEl ? navEl.querySelector('.nav__actions') : null;
+    const mqMobile = window.matchMedia('(max-width: 768px)');
+
+    function syncDrawerLocation(mq) {
+      if (mq.matches) {
+        // Mobile: detach to <body>
+        if (navOverlay && navOverlay.parentNode !== document.body) {
+          document.body.appendChild(navOverlay);
+        }
+        if (navLinks.parentNode !== document.body) {
+          document.body.appendChild(navLinks);
+        }
+      } else if (navEl && navActions) {
+        // Desktop: restore order -> ...logo, overlay, links, actions
+        if (navOverlay && navOverlay.parentNode !== navEl) {
+          navEl.insertBefore(navOverlay, navActions);
+        }
+        if (navLinks.parentNode !== navEl) {
+          navEl.insertBefore(navLinks, navActions);
+        }
+      }
+    }
+
+    syncDrawerLocation(mqMobile);
+
     // Guard: ignore hamburger triggers that are part of a multi-touch gesture (pinch-zoom)
     let touchCount = 0;
     document.addEventListener('touchstart', (e) => { touchCount = e.touches.length; }, { passive: true });
@@ -127,6 +159,12 @@ document.addEventListener('DOMContentLoaded', () => {
       navOverlay.addEventListener('touchend', (e) => { e.preventDefault(); closeNav(); }, { passive: false });
     }
     navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNav));
+
+    // Re-home the drawer when crossing the mobile/desktop breakpoint.
+    mqMobile.addEventListener('change', (mq) => {
+      if (isOpen) closeNav();
+      syncDrawerLocation(mq);
+    });
 
   }
 
