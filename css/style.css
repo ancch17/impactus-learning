@@ -96,7 +96,7 @@
 
 /* ---------- RESET & BASE ---------- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
 body {
   font-family: var(--font-body);
   font-size: var(--text-base);
@@ -163,7 +163,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 .theme-toggle:hover { color: var(--color-text); background: var(--color-surface); }
 
 /* Nav Toggle (hamburger) */
-.nav__toggle { display: none; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: var(--radius-md); color: var(--color-text); }
+.nav__toggle { display: none; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: var(--radius-md); color: var(--color-text); touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 
 /* ── Mobile Nav Drawer ── */
 .nav__drawer-header { display: none; }

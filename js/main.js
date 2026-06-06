@@ -82,8 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const navClose  = document.querySelector('.nav__close');
 
   if (navToggle && navLinks) {
-    const drawerWidth = () => navLinks.offsetWidth;
     let isOpen = false;
+
+    // Guard: ignore hamburger triggers that are part of a multi-touch gesture (pinch-zoom)
+    let touchCount = 0;
+    document.addEventListener('touchstart', (e) => { touchCount = e.touches.length; }, { passive: true });
+    document.addEventListener('touchend',   (e) => { if (e.touches.length === 0) touchCount = 0; }, { passive: true });
 
     function openNav() {
       isOpen = true;
@@ -111,9 +115,17 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.overflow = '';
     }
 
-    navToggle.addEventListener('click', () => { if (!isOpen) openNav(); else closeNav(); });
+    // Only open/close on single-touch clicks — not on pinch gestures
+    navToggle.addEventListener('click', () => {
+      if (touchCount > 1) return;
+      if (!isOpen) openNav(); else closeNav();
+    });
     if (navClose)   navClose.addEventListener('click', closeNav);
-    if (navOverlay) navOverlay.addEventListener('click', closeNav);
+    if (navOverlay) {
+      navOverlay.addEventListener('click', closeNav);
+      // Fallback for touch devices where click on overlay may not fire
+      navOverlay.addEventListener('touchend', (e) => { e.preventDefault(); closeNav(); }, { passive: false });
+    }
     navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNav));
 
   }
