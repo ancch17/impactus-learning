@@ -331,6 +331,14 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
     flex-direction: column;
     align-items: flex-start;
   }
+  /* On mobile, let the hero capsule + buttons wrap instead of overflowing off-screen */
+  .hero__capsule-link,
+  .hero__actions .btn {
+    white-space: normal;
+    max-width: 100%;
+    text-align: left;
+    overflow-wrap: break-word;
+  }
 }
 .hero__eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
