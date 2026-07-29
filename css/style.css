@@ -282,7 +282,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   align-self: center;
   justify-self: end;
   width: 100%;
-  max-width: 520px;
+  max-width: 460px;
 }
 .hero__photo {
   width: 100%; height: auto;
@@ -295,14 +295,14 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 
 .hero__inner {
   position: relative; z-index: 1;
-  max-width: 660px;
+  max-width: 780px;
   min-width: 0;
 }
 /* Text + ladder get the majority of the width; photo sits beside them */
 .hero .container {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: 48px;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  gap: 44px;
   align-items: center;
 }
 @media (max-width: 1024px) {
@@ -402,17 +402,17 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 /* ---------- HERO LADDER (course level/format grid) ---------- */
 .hero__ladder {
   display: flex; flex-direction: column; gap: 12px;
-  width: 100%; max-width: 660px;
+  width: 100%;
 }
 .hero__ladder-row {
-  display: grid; grid-template-columns: 104px 1fr 1fr;
+  display: grid; grid-template-columns: 152px 1fr 1fr;
   gap: 10px; align-items: stretch;
 }
 .hero__ladder-fam {
-  display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: flex-start; justify-content: center;
 }
 .hero__ladder-fam-img {
-  width: 100%; max-width: 104px; aspect-ratio: 1 / 1;
+  width: 100%; max-width: 152px; height: auto; aspect-ratio: 1 / 1;
   border-radius: var(--radius-md);
   object-fit: cover; object-position: center;
   border: 1px solid var(--color-divider);
@@ -488,7 +488,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 @media (max-width: 640px) {
   .hero__ladder-row { grid-template-columns: 1fr; gap: 8px; }
   .hero__ladder-fam { justify-content: flex-start; gap: 10px; padding: 2px 0 4px; }
-  .hero__ladder-fam-img { max-width: 56px; }
+  .hero__ladder-fam-img { max-width: 132px; }
 }
 
 /* ---------- GOOGLE REVIEWS STRIP ---------- */
