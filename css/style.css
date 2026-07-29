@@ -331,6 +331,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
     flex-direction: column;
     align-items: flex-start;
   }
+  .hero__ladder { position: relative; z-index: 2; }
   /* On mobile, let the hero capsule + buttons wrap instead of overflowing off-screen.
      These are inline-flex pills; force the flex line to wrap and allow the text to break. */
   .hero__capsule-link,
@@ -409,6 +410,84 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 }
 [data-theme="dark"] .hero__capsule-link:hover {
   background: #7A4A28;
+}
+
+/* ---------- HERO LADDER (course level/format grid) ---------- */
+.hero__ladder {
+  display: flex; flex-direction: column; gap: 12px;
+  width: 100%; max-width: 600px;
+}
+.hero__ladder-row {
+  display: grid; grid-template-columns: 96px 1fr 1fr;
+  gap: 10px; align-items: stretch;
+}
+.hero__ladder-fam {
+  display: flex; align-items: center;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+.hero__ladder-cell {
+  display: flex; flex-direction: column; gap: 4px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  text-decoration: none;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.hero__ladder-cell:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.hero__ladder-level {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--color-accent);
+}
+.hero__ladder-name {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 1rem; line-height: 1.25;
+  color: var(--color-text);
+}
+.hero__ladder-desc {
+  font-size: 12px; line-height: 1.5;
+  color: var(--color-text-muted);
+}
+.hero__ladder-cell--start {
+  background: var(--color-brand);
+  border-color: var(--color-brand);
+  cursor: pointer;
+}
+[data-theme="dark"] .hero__ladder-cell--start {
+  background: #5B3516;
+  border-color: #5B3516;
+}
+.hero__ladder-cell--start:hover { transform: translateY(-2px); border-color: var(--color-brand); }
+[data-theme="dark"] .hero__ladder-cell--start:hover { border-color: #5B3516; }
+.hero__ladder-cell--start .hero__ladder-level { color: var(--color-accent); }
+.hero__ladder-cell--start .hero__ladder-name {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+  color: #fff;
+}
+.hero__ladder-cell--start .hero__ladder-name::after {
+  content: 'START HERE';
+  font-family: var(--font-body); font-style: normal;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+  color: var(--color-brand);
+  background: var(--color-accent);
+  border-radius: 4px; padding: 2px 7px;
+}
+.hero__ladder-cell--start .hero__ladder-desc { color: rgba(255,255,255,0.72); }
+.hero__ladder-corp {
+  align-self: flex-start;
+  font-size: 13px; font-weight: 600;
+  color: var(--color-brand);
+  text-decoration: underline; text-underline-offset: 3px;
+  margin-top: 4px;
+}
+@media (max-width: 640px) {
+  .hero__ladder-row { grid-template-columns: 1fr; gap: 8px; }
+  .hero__ladder-fam { padding-top: 2px; }
 }
 
 /* ---------- GOOGLE REVIEWS STRIP ---------- */
