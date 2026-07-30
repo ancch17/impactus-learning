@@ -261,6 +261,12 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 .btn--outline:hover { background: var(--color-surface); border-color: var(--color-brand); }
 .btn--lg { padding: 16px 36px; font-size: var(--text-base); }
 
+/* Student Portal capsule — desktop only; on mobile the link lives in the nav drawer */
+.nav__portal { padding: 10px 20px; }
+.nav__portal svg { opacity: 0.75; }
+@media (min-width: 769px) { .nav__links li.nav__portal-item { display: none; } }
+@media (max-width: 768px) { .nav__portal { display: none; } }
+
 /* ---------- HERO ---------- */
 .hero {
   position: relative; overflow: hidden;
