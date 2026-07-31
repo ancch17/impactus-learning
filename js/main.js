@@ -204,3 +204,21 @@ document.addEventListener('DOMContentLoaded', () => {
     obs.observe(el);
   });
 });
+
+
+/* ── Referral capture ──
+   Students' share links point at https://impactuslearning.com/?ref=CODE (not at the
+   Reserve Seat portal — a stranger shouldn't be asked to sign in before seeing anything).
+   Store the code in a cookie on `.impactuslearning.com`, readable on BOTH this site and
+   events.impactuslearning.com, so the visitor can browse every course page freely and the
+   Reserve Seat portal still attaches the referral when they eventually sign up. 60 days. */
+(function () {
+  try {
+    var ref = new URLSearchParams(window.location.search).get('ref');
+    if (!ref) return;
+    ref = ref.trim().toUpperCase();
+    if (!/^[A-Z0-9][A-Z0-9_-]{1,23}$/.test(ref)) return;   // codes look like PECK653
+    document.cookie = 'il_ref=' + encodeURIComponent(ref) +
+      '; domain=.impactuslearning.com; path=/; max-age=5184000; SameSite=Lax; Secure';
+  } catch (e) { /* never let this break the page */ }
+})();
