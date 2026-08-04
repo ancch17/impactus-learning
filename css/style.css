@@ -1759,13 +1759,52 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   max-width: min(560px, 42vw);
   margin-bottom: 26px;
 }
-.heroX__actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 34px; }
+.heroX__actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-bottom: 34px; }
+.heroX__badge--link {
+  margin-bottom: 0;
+  align-self: stretch;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.25s, border-color 0.25s, transform 0.25s;
+}
+.heroX__badge--link:hover {
+  background: rgba(255,255,255,0.95);
+  border-color: rgba(34,48,63,0.45);
+  transform: translateY(-1px);
+}
+[data-theme="dark"] .heroX__badge--link:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.5); }
 .btn--hero-gold {
   background: var(--color-accent); color: #fff;
   border: 1.5px solid transparent;
   box-shadow: 0 4px 18px rgba(184,115,42,0.35);
 }
 .btn--hero-gold:hover { background: var(--color-accent-hover); color: #fff; transform: translateY(-1px); }
+/* Glowing, animated top CTA — sits where the badge used to be, always above the fold */
+.heroX__cta-top {
+  position: relative;
+  margin-bottom: 22px;
+  overflow: hidden;
+  animation: heroGlow 2.4s ease-in-out infinite;
+}
+.heroX__cta-top::after {
+  content: "";
+  position: absolute; top: 0; bottom: 0; left: -75%;
+  width: 50%;
+  background: linear-gradient(105deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-20deg);
+  animation: heroShine 3.6s ease-in-out infinite;
+}
+@keyframes heroGlow {
+  0%, 100% { box-shadow: 0 4px 18px rgba(184,115,42,0.35), 0 0 0 0 rgba(184,115,42,0.28); }
+  50%      { box-shadow: 0 6px 30px rgba(208,133,53,0.65), 0 0 0 7px rgba(184,115,42,0.10); }
+}
+@keyframes heroShine {
+  0%       { left: -75%; }
+  55%, 100%{ left: 125%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .heroX__cta-top, .heroX__cta-top::after { animation: none; }
+}
 .btn--hero-ghost {
   background: rgba(255,255,255,0.55); color: var(--hx-ink);
   border: 1.5px solid rgba(34,48,63,0.4);
@@ -1808,18 +1847,20 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   .heroX { display: block; min-height: 0; }
   .heroX__art {
     position: relative;
-    width: min(100%, 460px); height: auto;
+    width: min(100%, 520px); height: auto;
     max-width: none;
+    aspect-ratio: 16 / 9;
     margin: 0 auto;
   }
-  .heroX__bg { object-position: center; opacity: 0.62; }
+  .heroX__bg { object-position: 50% 10%; opacity: 0.62; }
   [data-theme="dark"] .heroX__bg { opacity: 0.38; }
   .heroX__art::after {
     background:
-      linear-gradient(180deg, var(--heroX-bg-0) 55%, var(--heroX-bg) 100%),
+      linear-gradient(180deg, var(--heroX-bg-0) 48%, var(--heroX-bg) 96%),
       linear-gradient(180deg, var(--heroX-bg) 0%, var(--heroX-bg-0) 10%);
   }
-  .heroX__content { padding-top: 0; padding-bottom: 42px; }
+  .heroX__content { padding-top: 2px; padding-bottom: 42px; }
+  .heroX__cta-top { margin-bottom: 18px; }
   .heroX__title, .heroX__sub, .heroX__proof { max-width: none; }
 }
 @media (max-width: 640px) {
