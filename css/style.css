@@ -1933,23 +1933,32 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   transform: translateY(-2px);
   box-shadow: 0 6px 22px rgba(184,115,42,0.28);
 }
-/* Subtle breathing glow on the four course cards — staggered so they never blink in unison */
+/* Breathing glow on the four course cards — staggered so they never blink in unison */
 .plevel {
-  --plv-glow:   rgba(184,115,42,0.16);
-  --plv-border: rgba(184,115,42,0.50);
-  animation: plevelGlow 4.2s ease-in-out infinite;
+  --plv-glow:   rgba(184,115,42,0.42);
+  --plv-ring:   rgba(184,115,42,0.16);
+  --plv-border: #B8732A;
+  animation: plevelGlow 3.2s ease-in-out infinite;
 }
 [data-theme="dark"] .plevel {
-  --plv-glow:   rgba(245,201,123,0.12);
-  --plv-border: rgba(245,201,123,0.45);
+  --plv-glow:   rgba(245,201,123,0.30);
+  --plv-ring:   rgba(245,201,123,0.14);
+  --plv-border: rgba(245,201,123,0.85);
 }
-.plevel:nth-child(2) { animation-delay: -2.1s; }
-.path:nth-child(2) .plevel { animation-delay: -1.05s; }
-.path:nth-child(2) .plevel:nth-child(2) { animation-delay: -3.15s; }
+.plevel:nth-child(2) { animation-delay: -1.6s; }
+.path:nth-child(2) .plevel { animation-delay: -0.8s; }
+.path:nth-child(2) .plevel:nth-child(2) { animation-delay: -2.4s; }
 .plevel:hover { animation: none; }
 @keyframes plevelGlow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(184,115,42,0); }
-  50%      { box-shadow: 0 5px 20px var(--plv-glow); border-color: var(--plv-border); }
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(184,115,42,0);
+    transform: translateY(0);
+  }
+  50% {
+    box-shadow: 0 8px 30px var(--plv-glow), 0 0 0 3px var(--plv-ring);
+    border-color: var(--plv-border);
+    transform: translateY(-2px);
+  }
 }
 @media (prefers-reduced-motion: reduce) { .plevel { animation: none; } }
 .plevel__tag {
