@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=portal-drawer-v2">
+  <link rel="stylesheet" href="css/style.css?v=landing-v3">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 </head>
@@ -69,53 +69,98 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero__bg"></div>
+  <!-- HERO — full-photo, outcome-led -->
+  <section class="heroX">
+    <img src="images/training-hero-banner.jpg" alt="A hands-on class with Dr Andrew Chew — everyone thumbs-up behind their builds" class="heroX__bg" loading="eager" fetchpriority="high">
+    <div class="heroX__shade"></div>
+    <div class="container heroX__content">
+      <span class="heroX__badge">&#10022; Hands-on Gen AI masterclasses &middot; Singapore</span>
+      <h1 class="heroX__title">Leave with a working build,<br><span>not just notes.</span></h1>
+      <p class="heroX__sub">Small classes with Dr Andrew Chew. Real tools, your own laptop &mdash; you build it in class and leave hitting the road running.</p>
+      <div class="heroX__actions">
+        <a href="#paths" class="btn btn--lg btn--hero-gold">Explore the Classes</a>
+        <a href="https://events.impactuslearning.com/portal/" class="btn btn--lg btn--hero-ghost" target="_blank" rel="noopener">Reserve Seat</a>
+      </div>
+      <div class="heroX__proof">
+        <div class="heroX__stat"><strong data-count="1100" data-suffix="+">0</strong><span>Professionals trained</span></div>
+        <div class="heroX__stat"><strong>5.0&#9733;</strong><span>Google rating</span></div>
+        <div class="heroX__stat"><strong>30+</strong><span>Years industry experience</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S IN IT FOR YOU -->
+  <section class="whyrow" data-animate>
     <div class="container">
-      <div class="hero__inner">
-        <h1 class="hero__title">
-          Learning That Leaves<br>
-          <span>A Lasting Impact</span>
-        </h1>
-        <p class="hero__sub">Professional Gen AI training built for the people who drive organisations forward — practical, transformative, and designed for the future of work.</p>
-        <div class="hero__ladder">
-          <div class="hero__ladder-row">
-            <div class="hero__ladder-fam"><img src="images/claude-tile-v2.jpg" alt="Agentic AI — learn with Dr Andrew Chew" class="hero__ladder-fam-img" loading="lazy"></div>
-            <a href="https://events.impactuslearning.com/claudemasterclass/" class="hero__ladder-cell hero__ladder-cell--start">
-              <span class="hero__ladder-level">Level 1</span>
-              <span class="hero__ladder-name">Master Claude &ndash; Agentic AI</span>
-              <span class="hero__ladder-desc">From zero to your own Agentic Coworker, in one session.</span>
-              <span class="hero__ladder-fmt">Online or face-to-face</span>
-            </a>
-            <a href="https://events.impactuslearning.com/claudebuild/" class="hero__ladder-cell">
-              <span class="hero__ladder-level">Level 2</span>
-              <span class="hero__ladder-name">Claude Masterclass &ndash; Build</span>
-              <span class="hero__ladder-desc">You build the real thing, in the room.</span>
-              <span class="hero__ladder-fmt">Face-to-face only</span>
-            </a>
-          </div>
-          <div class="hero__ladder-row">
-            <div class="hero__ladder-fam"><img src="images/animation-tile-v2.jpg" alt="AI Animation — create virtual influencers" class="hero__ladder-fam-img" loading="lazy"></div>
-            <a href="https://events.impactuslearning.com/animation/" class="hero__ladder-cell">
-              <span class="hero__ladder-level">Level 1</span>
-              <span class="hero__ladder-name">AI Animation Masterclass</span>
-              <span class="hero__ladder-desc">You direct every shot by hand.</span>
-              <span class="hero__ladder-fmt">Online or face-to-face</span>
-            </a>
-            <a href="https://events.impactuslearning.com/animationautomation/" class="hero__ladder-cell">
-              <span class="hero__ladder-level">Level 2</span>
-              <span class="hero__ladder-name">AI Animation &ndash; Automation</span>
-              <span class="hero__ladder-desc">The agent runs the pipeline. You supervise.</span>
-              <span class="hero__ladder-fmt">Face-to-face only</span>
-            </a>
-          </div>
-          <a href="training.html" class="hero__ladder-corp">Explore Customized Corporate Training &rarr;</a>
+      <div class="whyrow__grid">
+        <div class="whyrow__item">
+          <h3>You build in class</h3>
+          <p>Not slides about AI. A working build on your own laptop, before you leave.</p>
+        </div>
+        <div class="whyrow__item">
+          <h3>Taught the week it ships</h3>
+          <p>The tools as they are this week &mdash; not last year&rsquo;s syllabus.</p>
+        </div>
+        <div class="whyrow__item">
+          <h3>Hours, not days</h3>
+          <p>One focused session. No two days off work.</p>
         </div>
       </div>
-      <div class="hero__photo-wrap">
-        <img src="images/banner-hero-v2.jpg" alt="Succeed with AI with Impactus Learning — Dr Andrew Chew with a class of online learners" class="hero__photo" loading="eager" width="1254" height="1254">
+    </div>
+  </section>
+
+  <!-- CHOOSE YOUR PATH -->
+  <section class="section" id="paths" data-animate>
+    <div class="container">
+      <p class="section__tag">Where to start</p>
+      <h2 class="section__title">Two Paths. Pick Yours.</h2>
+      <p class="section__sub">Start at either Level 1 &mdash; Claude or Animation. Each Level 2 builds on its own Level 1. Limited seats per intake.</p>
+
+      <div class="paths">
+        <article class="path" data-animate>
+          <div class="path__media"><img src="images/claude-tile-v2.jpg" alt="Agentic AI — learn with Dr Andrew Chew" loading="lazy"></div>
+          <div class="path__head">
+            <span class="path__world">The Claude Path</span>
+            <h3 class="path__title">Agentic AI</h3>
+            <p class="path__desc">Turn Claude into an AI coworker that runs your files, your clients, your processes.</p>
+          </div>
+          <div class="path__levels">
+            <a href="https://events.impactuslearning.com/claudemasterclass/" class="plevel">
+              <span class="plevel__tag">Level 1 <em class="plevel__fmt">Online or face-to-face</em></span>
+              <span class="plevel__name">Master Claude &ndash; Agentic AI</span>
+              <span class="plevel__desc">From zero to your own Agentic Coworker, in one session.</span>
+            </a>
+            <a href="https://events.impactuslearning.com/claudebuild/" class="plevel">
+              <span class="plevel__tag">Level 2 <em class="plevel__fmt">Face-to-face only</em></span>
+              <span class="plevel__name">Claude Masterclass &ndash; Build</span>
+              <span class="plevel__desc">You build the real thing, in the room.</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="path" data-animate>
+          <div class="path__media"><img src="images/animation-tile-v2.jpg" alt="AI Animation — create virtual influencers" loading="lazy"></div>
+          <div class="path__head">
+            <span class="path__world">The Animation Path</span>
+            <h3 class="path__title">AI Animation</h3>
+            <p class="path__desc">Direct cinematic AI video yourself &mdash; then let the agent run the pipeline.</p>
+          </div>
+          <div class="path__levels">
+            <a href="https://events.impactuslearning.com/animation/" class="plevel">
+              <span class="plevel__tag">Level 1 <em class="plevel__fmt">Online or face-to-face</em></span>
+              <span class="plevel__name">AI Animation Masterclass</span>
+              <span class="plevel__desc">You direct every shot by hand.</span>
+            </a>
+            <a href="https://events.impactuslearning.com/animationautomation/" class="plevel">
+              <span class="plevel__tag">Level 2 <em class="plevel__fmt">Face-to-face only</em></span>
+              <span class="plevel__name">AI Animation &ndash; Automation</span>
+              <span class="plevel__desc">The agent runs the pipeline. You supervise.</span>
+            </a>
+          </div>
+        </article>
       </div>
+
+      <a href="training.html" class="hero__ladder-corp" style="display:inline-block;margin-top:22px;">Explore Customized Corporate Training &rarr;</a>
     </div>
   </section>
 
@@ -2500,22 +2545,6 @@
 </div><!-- /reviews-track -->
     </div><!-- /overflow wrapper -->
   </div><!-- /reviews-strip -->
-
-  <!-- STATS -->
-  <section style="padding: var(--space-16) 0;" data-animate>
-    <div class="container">
-      <div class="stats">
-        <div class="stat">
-          <div class="stat__number" data-count="1100" data-suffix="+">0</div>
-          <div class="stat__label">Professionals Trained</div>
-        </div>
-        <div class="stat">
-          <div class="stat__number" data-count="100" data-suffix="%">0</div>
-          <div class="stat__label">Trainer Satisfaction</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- WHY IMPACTUS -->
   <section class="section section--bordered" data-animate>
