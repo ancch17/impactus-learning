@@ -152,6 +152,12 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   display: block; padding: 8px 14px; font-size: var(--text-sm);
   font-weight: 500; color: var(--color-text-muted);
   border-radius: var(--radius-md); transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+/* Desktop: tighten the item padding just below 1200px so "About Andrew" and
+   "Corporate Training" stop wrapping onto two lines. */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .nav__links a { padding: 8px 9px; }
 }
 .nav__links a:hover { color: var(--color-text); background: var(--color-brand-subtle); }
 .nav__links a.active { color: var(--color-brand); font-weight: 600; }
@@ -933,6 +939,50 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   color: var(--color-text-muted);
   line-height: 1.75;
   max-width: 600px;
+}
+
+/* --- Split page hero: copy left, photo right. Replaces the old stacked
+   .hero__photo-wrap, which sat above the container and left a tall empty
+   column beside it (and letterboxed the 3:2 photo into a 1:1 box). --- */
+.page-hero--split {
+  padding: var(--space-16) 0;
+  min-height: 0;
+}
+.page-hero--split > .container {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: var(--space-12);
+  align-items: center;
+}
+.page-hero--split .page-hero__sub { max-width: 560px; margin-bottom: 0; }
+.page-hero__media {
+  position: relative;
+  min-width: 0;
+}
+.page-hero__media picture { display: block; }
+.page-hero__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px rgba(91,53,22,0.14);
+}
+
+@media (max-width: 900px) {
+  .page-hero--split > .container {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  .page-hero--split .page-hero__sub { max-width: none; }
+}
+
+@media (max-width: 768px) {
+  .page-hero--split { padding: var(--space-10) 0 var(--space-12); }
+  .page-hero--split > .container { gap: var(--space-6); }
+  /* mobile art is a wide 1620x626 crop */
+  .page-hero__img { aspect-ratio: 1620 / 626; border-radius: var(--radius-md); }
 }
 
 /* ---------- CREDENTIAL GRID (about) ---------- */
@@ -2045,3 +2095,67 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   font-size: 1.22rem; color: var(--color-text);
 }
 .plevel__desc { font-size: 13.5px; line-height: 1.55; color: var(--color-text-muted); }
+
+/* ---------- LATEST CASE STUDY (image on top, quotes below) ---------- */
+.cs-latest {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 4px 32px rgba(91,53,22,0.08);
+}
+.cs-latest__media { position: relative; line-height: 0; }
+.cs-latest__media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+.cs-latest__body { padding: var(--space-10); }
+
+.cs-quotes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-8);
+}
+.cs-quote {
+  margin: 0;
+  padding: var(--space-5);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.cs-quote blockquote {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--color-text);
+  font-style: italic;
+}
+.cs-quote blockquote::before { content: "\201C"; }
+.cs-quote blockquote::after  { content: "\201D"; }
+.cs-quote figcaption {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: var(--text-xs);
+  line-height: 1.5;
+}
+.cs-quote figcaption strong { color: var(--color-brand); font-weight: 700; }
+.cs-quote figcaption span { color: var(--color-text-muted); }
+.cs-quotes__source {
+  margin-top: var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+  .cs-latest__body { padding: var(--space-6); }
+  .cs-quotes { grid-template-columns: 1fr; gap: var(--space-4); }
+}
