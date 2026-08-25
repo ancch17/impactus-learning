@@ -491,7 +491,10 @@
     });
 
     // Constants
-    var CORRECT_PASSWORD = '4450';
+    // Security audit 2026-08-25 (finding 09): this value is visible in public source and always
+    // will be — it is a client-side speed bump on a chatbot on/off toggle stored in the visitor's
+    // OWN localStorage, not an access control. Rotated 2026-08-25 so the old value isn't a PIN reused elsewhere.
+    var CORRECT_PASSWORD = '519285';
     var SESSION_KEY = 'admin_session';
     var CHATBOT_KEY = 'chatbot_enabled';
 
