@@ -2130,6 +2130,14 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   flex-direction: column;
   gap: var(--space-4);
 }
+.cs-quote__stars {
+  display: flex;
+  gap: 2px;
+  color: #F5A623;
+}
+.cs-quote__stars svg { width: 15px; height: 15px; display: block; }
+.cs-quote__stars svg.is-empty { color: var(--color-divider-strong); opacity: 0.55; }
+[data-theme="dark"] .cs-quote__stars svg.is-empty { opacity: 0.4; }
 .cs-quote blockquote {
   margin: 0;
   font-size: var(--text-sm);
