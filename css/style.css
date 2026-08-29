@@ -2096,6 +2096,45 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 }
 .plevel__desc { font-size: 13.5px; line-height: 1.55; color: var(--color-text-muted); }
 
+
+/* ---- Corporate band (under the two path cards) ---- */
+.cband {
+  display: grid;
+  grid-template-columns: 1.08fr 1fr;
+  gap: 0;
+  margin-top: 26px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.cband__media { position: relative; }
+.cband__media img {
+  width: 100%; height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover; object-position: center;
+  display: block;
+}
+.cband__body {
+  display: flex; flex-direction: column;
+  padding: 24px 26px 22px;
+}
+.cband__body .path__title { margin: 2px 0 8px; }
+.cband__levels {
+  display: flex; flex-direction: column; gap: 12px;
+  margin-top: auto; padding-top: 16px;
+}
+.cband .plevel { animation-delay: -0.4s; }
+@media (max-width: 900px) {
+  .cband { grid-template-columns: 1fr; }
+  .cband__media img { height: auto; }
+  .cband__body { padding: 20px 20px 22px; }
+}
+@media (max-width: 560px) {
+  .cband .plevel__tag { flex-direction: column; align-items: flex-start; gap: 3px; }
+}
+
 /* ---------- LATEST CASE STUDY (image on top, quotes below) ---------- */
 .cs-latest {
   background: var(--color-surface);
