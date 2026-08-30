@@ -1018,6 +1018,9 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   gap: var(--space-5);
 }
 @media (max-width: 768px) { .format-grid { grid-template-columns: 1fr; } }
+.format-grid--4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1080px) { .format-grid--4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { .format-grid--4 { grid-template-columns: 1fr; } }
 .format-card {
   background: var(--color-bg);
   border: 1px solid var(--color-divider);
