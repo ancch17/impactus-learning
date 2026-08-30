@@ -2097,6 +2097,59 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
 .plevel__desc { font-size: 13.5px; line-height: 1.55; color: var(--color-text-muted); }
 
 
+
+/* ---- Corporate training page: hero CTA, included/not-included, FAQ ---- */
+.page-hero__cta { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-6); }
+.incl { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+@media (max-width: 820px) { .incl { grid-template-columns: 1fr; } }
+.incl__col {
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  padding: 24px 26px;
+  background: var(--color-bg);
+}
+.incl__head {
+  font-family: var(--font-display); font-style: italic; font-weight: 400;
+  font-size: 1.35rem; color: var(--color-text); margin-bottom: 12px;
+}
+.incl__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 11px; }
+.incl__list li {
+  position: relative; padding-left: 22px;
+  font-size: 14.5px; line-height: 1.6; color: var(--color-text-muted);
+}
+.incl__list li::before {
+  content: "\2014"; position: absolute; left: 0; top: 0;
+  color: var(--color-accent); font-weight: 700;
+}
+.incl__col--out .incl__list li::before { content: "\00d7"; }
+.incl__note {
+  margin-top: 18px; font-size: 13px; line-height: 1.65;
+  color: var(--color-text-subtle); max-width: 78ch;
+}
+.tfaq { display: flex; flex-direction: column; gap: 10px; max-width: 900px; }
+.tfaq__item {
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  padding: 0 20px;
+}
+.tfaq__q {
+  cursor: pointer; list-style: none;
+  padding: 16px 0; font-weight: 600; font-size: 15.5px;
+  color: var(--color-text);
+  display: flex; justify-content: space-between; align-items: center; gap: 14px;
+}
+.tfaq__q::-webkit-details-marker { display: none; }
+.tfaq__q::after {
+  content: "+"; color: var(--color-accent);
+  font-size: 20px; font-weight: 400; line-height: 1;
+}
+.tfaq__item[open] .tfaq__q::after { content: "\2013"; }
+.tfaq__a {
+  padding: 0 0 18px; font-size: 14.5px; line-height: 1.7;
+  color: var(--color-text-muted); max-width: 74ch;
+}
+
 /* ---- Corporate band (under the two path cards) ---- */
 .cband {
   display: grid;
