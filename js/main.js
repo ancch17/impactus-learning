@@ -222,3 +222,25 @@ document.addEventListener('DOMContentLoaded', () => {
       '; domain=.impactuslearning.com; path=/; max-age=5184000; SameSite=Lax; Secure';
   } catch (e) { /* never let this break the page */ }
 })();
+
+
+/* ── Reserve Seat click tracking ──
+   The Reserve Seat portal lives on events.impactuslearning.com, which is configured as a
+   linked domain for cross-domain measurement (see the ?_gl= param it gets on click). GA4's
+   automatic outbound-click detection deliberately skips linked domains — they're treated as
+   internal navigation, not an outbound click — so no event was ever firing here. Send an
+   explicit event instead, named to match the reserve_seat_click Key Event already configured
+   in GA4 Admin. Capture phase + no preventDefault, so this can never block the navigation. */
+(function () {
+  try {
+    if (typeof gtag !== 'function') return;
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="events.impactuslearning.com/portal"]');
+      if (!a) return;
+      gtag('event', 'reserve_seat_click', {
+        link_url: a.href,
+        link_text: (a.textContent || '').trim().slice(0, 100)
+      });
+    }, true);
+  } catch (e) { /* never let this break the page */ }
+})();
