@@ -10,6 +10,28 @@
     gtag('config', 'G-1ZG98XKEWS');
   </script>
 
+  <!-- Tidy URL: strip GA link-decoration params (_gl, _ga, _gid, _gac_*) from the address
+       bar AFTER gtag.js has read them. Cross-domain measurement still works; the visitor
+       just never sees the junk. -->
+  <script>
+    (function () {
+      var JUNK = /^(_gl|_ga|_gid|_gac_.*)$/;
+      function tidyUrl() {
+        try {
+          var url = new URL(window.location.href), dirty = false;
+          Array.from(url.searchParams.keys()).forEach(function (k) {
+            if (JUNK.test(k)) { url.searchParams.delete(k); dirty = true; }
+          });
+          if (!dirty) return;
+          var qs = url.searchParams.toString();
+          history.replaceState(history.state, '', url.pathname + (qs ? '?' + qs : '') + url.hash);
+        } catch (e) { /* no-op */ }
+      }
+      if (document.readyState === 'complete') tidyUrl();
+      else window.addEventListener('load', tidyUrl);
+    })();
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light dark">
