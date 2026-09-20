@@ -2182,6 +2182,17 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   margin-top: auto; padding-top: 16px;
 }
 .cband .plevel { animation-delay: -0.4s; }
+
+/* Copilot launch band (2026-09) — same shell as the corporate band, plus a "New" chip */
+.cband--copilot { margin-top: 26px; }
+.cband--copilot .plevel { animation-delay: -2.0s; }
+.cband__new {
+  display: inline-block; vertical-align: 1px; margin-left: 8px;
+  font-style: normal; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 999px;
+  background: var(--color-accent); color: #fff;
+}
 @media (max-width: 900px) {
   .cband { grid-template-columns: 1fr; }
   .cband__media img { height: auto; }
