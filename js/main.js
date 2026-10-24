@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var ref = new URLSearchParams(window.location.search).get('ref');
     if (!ref) return;
     ref = ref.trim().toUpperCase();
-    if (!/^[A-Z0-9][A-Z0-9_-]{1,23}$/.test(ref)) return;   // codes look like PECK653
+    if (!/^[A-Z0-9][A-Z0-9_-]{1,23}$/.test(ref)) return;   // codes look like ABCD123
     document.cookie = 'il_ref=' + encodeURIComponent(ref) +
       '; domain=.impactuslearning.com; path=/; max-age=5184000; SameSite=Lax; Secure';
   } catch (e) { /* never let this break the page */ }
