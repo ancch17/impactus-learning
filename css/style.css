@@ -1391,6 +1391,79 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   letter-spacing: 0.02em;
 }
 
+/* — Teams Trained (client logos) — */
+.trained { padding: var(--space-16) 0 var(--space-14); }
+.trained__tag, .trained__title { text-align: center; }
+.trained__title { margin-bottom: var(--space-10); }
+.trained__grid {
+  list-style: none; margin: 0 auto; padding: 0;
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: var(--space-6) var(--space-5);
+  max-width: 1040px;
+}
+.trained__item {
+  flex: 0 1 calc((100% - 4 * var(--space-5)) / 5);
+  min-width: 0;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+}
+.trained__mark {
+  width: 100%; height: 96px;
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--space-4) var(--space-5);
+  background: #fff;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-3);
+}
+.trained__mark img {
+  max-width: 100%; max-height: 44px;
+  width: auto; height: auto; object-fit: contain;
+  filter: grayscale(1); opacity: 0.72;
+  transition: filter 0.25s ease, opacity 0.25s ease;
+}
+.trained__item:hover .trained__mark img { filter: none; opacity: 1; }
+.trained__mark--compact img { max-height: 60px; }
+.trained__name {
+  font-size: var(--text-sm); font-weight: 600;
+  color: var(--color-text); line-height: 1.35;
+}
+.trained__type {
+  font-size: var(--text-xs); color: var(--color-text-muted);
+  margin-top: 2px;
+}
+.trained__talks {
+  text-align: center; max-width: 720px;
+  margin: var(--space-10) auto 0;
+  font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.7;
+}
+.trained__talks-label {
+  display: block;
+  font-size: var(--text-xs); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-bottom: var(--space-1);
+}
+.trained__note {
+  text-align: center; max-width: 640px;
+  margin: var(--space-6) auto 0;
+  font-size: var(--text-xs); color: var(--color-text-subtle); line-height: 1.6;
+}
+[data-theme="dark"] .trained__mark { background: #F4EFE8; border-color: var(--color-divider); }
+@media (max-width: 900px) {
+  .trained__item { flex-basis: calc((100% - 2 * var(--space-5)) / 3); }
+}
+@media (max-width: 560px) {
+  .trained__grid { gap: var(--space-5) var(--space-4); }
+  .trained__item { flex-basis: calc((100% - var(--space-4)) / 2); }
+  .trained__mark { height: 84px; padding: var(--space-3) var(--space-4); }
+  .trained__mark img { max-height: 38px; }
+  .trained__mark--compact img { max-height: 52px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trained__mark img { transition: none; }
+}
+
 /* — Split: Skills + Credentials — */
 .about-split {
   display: grid;
