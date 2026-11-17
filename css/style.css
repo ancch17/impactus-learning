@@ -2346,3 +2346,13 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
   .cs-latest__body { padding: var(--space-6); }
   .cs-quotes { grid-template-columns: 1fr; gap: var(--space-4); }
 }
+
+/* Two-line "Reserve Seat. / Book and Manage Courses." label (Andrew, 17 Nov 2026) */
+.rs2 { display: inline-flex; flex-direction: column; align-items: flex-start; line-height: 1.15; text-align: left; white-space: nowrap; }
+.rs2__b { font-size: 0.78em; font-weight: 500; opacity: 0.8; }
+/* Mid-width desktop (769–1200px): keep the two-line capsule compact so the logo keeps its size */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .nav__portal { padding: 8px 14px; }
+  .nav__portal svg { display: none; }
+  .nav__portal .rs2__b { font-size: 0.72em; }
+}
